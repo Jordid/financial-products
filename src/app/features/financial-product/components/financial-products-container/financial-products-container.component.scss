@@ -1,0 +1,13 @@
+.container {
+  padding: 48px;
+  .table-footer-container {
+    padding: 16px;
+    background-color: #fff;
+    .table-container {
+      overflow: auto;
+    }
+    .footer-container {
+      margin-top: 8px;
+    }
+  }
+}

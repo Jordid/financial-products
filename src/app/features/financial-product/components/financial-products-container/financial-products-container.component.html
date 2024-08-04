@@ -1,3 +1,15 @@
-<p>financial-product-container works!</p>
+<div class="container">
+  <div class="table-footer-container">
+    <div class="table-container">
+      <app-financial-products-table
+        [financialProducts]="financialProducts"
+      ></app-financial-products-table>
+    </div>
 
-<app-financial-products-table></app-financial-products-table>
+    <div class="footer-container">
+      <app-footer-table
+        [itemsNumber]="financialProducts.length"
+      ></app-footer-table>
+    </div>
+  </div>
+</div>

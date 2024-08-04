@@ -1,1 +1,24 @@
-<p>financial-products-table works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Logo</th>
+      <th>Nombre del producto</th>
+      <th>Descripción</th>
+      <th>Fecha de liberación</th>
+      <th>Fecha de reestructuración</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (financialProduct of financialProducts; track financialProduct) {
+    <tr>
+      <td>
+        <img [src]="financialProduct.logo" alt="Logo Producto" />
+      </td>
+      <td>{{ financialProduct.name }}</td>
+      <td>{{ financialProduct.description }}</td>
+      <td>{{ financialProduct.date_release | date : "shortDate" }}</td>
+      <td>{{ financialProduct.date_revision | date : "shortDate" }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
