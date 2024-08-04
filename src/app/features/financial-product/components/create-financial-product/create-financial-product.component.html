@@ -9,7 +9,11 @@
     <form [formGroup]="form" autocomplete="off">
       <div class="bp-row">
         <div class="pb-col-6">
-          <app-input-form-field label="ID" formControlName="id">
+          <app-input-form-field
+            label="ID"
+            formControlName="id"
+            [hasError]="hasErrors(form.controls.id)"
+          >
           </app-input-form-field>
 
           <!-- Errors -->
@@ -19,7 +23,11 @@
           ></app-input-error-messages>
         </div>
         <div class="pb-col-6">
-          <app-input-form-field label="Nombre" formControlName="name">
+          <app-input-form-field
+            label="Nombre"
+            formControlName="name"
+            [hasError]="hasErrors(form.controls.name)"
+          >
           </app-input-form-field>
 
           <!-- Errors -->
@@ -32,6 +40,7 @@
           <app-input-form-field
             label="Descripción"
             formControlName="description"
+            [hasError]="hasErrors(form.controls.description)"
           >
           </app-input-form-field>
 
@@ -42,7 +51,11 @@
           ></app-input-error-messages>
         </div>
         <div class="pb-col-6">
-          <app-input-form-field label="Logo" formControlName="logo">
+          <app-input-form-field
+            label="Logo"
+            formControlName="logo"
+            [hasError]="hasErrors(form.controls.logo)"
+          >
           </app-input-form-field>
 
           <!-- Errors -->
@@ -55,6 +68,7 @@
           <app-input-form-field
             label="Fecha Liberación"
             formControlName="date_release"
+            [hasError]="hasErrors(form.controls.date_release)"
           >
           </app-input-form-field>
 
@@ -68,6 +82,7 @@
           <app-input-form-field
             label="Fecha revisión"
             formControlName="date_revision"
+            [hasError]="hasErrors(form.controls.date_revision)"
           >
           </app-input-form-field>
 

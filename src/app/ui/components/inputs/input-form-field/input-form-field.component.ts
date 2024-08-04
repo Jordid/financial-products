@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
 import {
   ControlValueAccessor,
@@ -12,7 +13,7 @@ import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-input-form-field',
   standalone: true,
-  imports: [ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './input-form-field.component.html',
   styleUrl: './input-form-field.component.scss',
   providers: [
@@ -29,19 +30,16 @@ export class UiInputFormFieldComponent
   @Input() label = '';
   @Input() placeholder = '';
   @Input() disabled = false;
+  @Input() hasError = false;
 
-  formBuilder: FormBuilder;
   form: FormGroup;
+  private destroy$ = new Subject<void>();
 
   constructor(private fb: FormBuilder) {
-    this.formBuilder = fb;
-
-    this.form = this.formBuilder.group({
+    this.form = this.fb.group({
       control: [''],
     });
   }
-
-  private destroy$ = new Subject<void>();
 
   ngOnInit(): void {
     this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
@@ -55,14 +53,12 @@ export class UiInputFormFieldComponent
   }
 
   /* Start ControlValueAccessor implementation. */
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-empty-function
-  onChange(value?: string) {}
+  onChange = (value?: string) => {};
 
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  onTouched() {}
+  onTouched = () => {};
 
   writeValue(value?: string) {
-    this.form.controls.control.setValue(value);
+    this.form.controls.control.setValue(value, { emitEvent: false });
   }
 
   registerOnChange(fn: (value?: string) => void) {
@@ -82,10 +78,8 @@ export class UiInputFormFieldComponent
     if (this.form.pristine) {
       return;
     }
-
     this.onChange(value);
     this.onTouched();
-
     this.form.markAsPristine();
   }
 }

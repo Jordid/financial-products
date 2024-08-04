@@ -88,4 +88,8 @@ export class CreateFinancialProductComponent {
   get isFormValid() {
     return this.isFormDirty && this.form.valid && !this.submitting;
   }
+
+  hasErrors(control: any) {
+    return control.invalid && (control.dirty || control.touched);
+  }
 }
