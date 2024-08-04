@@ -13,13 +13,13 @@ export class FinancialProductService {
   constructor(private http: HttpClient) {}
 
   getFinancialProducts() {
-    const url = `${ApiBancoPinchinchaEnv.baseUrl}/ipf-msaproductosfinancieros/bp/products`;
+    const url = `${ApiBancoPinchinchaEnv.baseUrl}/ipf-msa-productosfinancieros/bp/products/`;
 
     return this.http.get<FinancialProduct[]>(`${url}`);
   }
 
   create(financialProduct: CreateFinancialProduct) {
-    const url = `${ApiBancoPinchinchaEnv.baseUrl}/ipf-msaproductosfinancieros/bp/products`;
+    const url = `${ApiBancoPinchinchaEnv.baseUrl}/ipf-msa-productosfinancieros/bp/products`;
 
     return this.http.post<FinancialProduct>(`${url}`, financialProduct);
   }

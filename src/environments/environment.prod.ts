@@ -8,5 +8,5 @@ export const appEnvironment = {
 
 export const apiBancoPinchincha = {
   baseUrl:
-    'https://tribu-ti-staffing-desarrolloafangwbmcrhucqfh.z01.azurefd.net',
+    'https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net',
 };

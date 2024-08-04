@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { catchError, delay, of } from 'rxjs';
+import { AlertType } from '../../../../ui/components/alerts/enums/alert-type.enum';
+import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
 import { FinancialProduct } from '../../../interfaces/financial-product.interface';
 import { FinancialProductService } from '../../services/financial-product.service';
-import { FINANCIAL_PRODUCS_MOCK } from './financial-products-mock';
-import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
-import { AlertType } from '../../../../ui/components/alerts/enums/alert-type.enum';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-financial-products-container',
@@ -40,8 +39,6 @@ export class FinancialProductsContainerComponent implements OnInit {
         this.gettingFinancialProducts = false;
 
         if (response === null) {
-          this.financialProducts = FINANCIAL_PRODUCS_MOCK;
-
           this.alertService.showNotification(
             'Error al obtener los productos financieros.',
             AlertType.Error
@@ -51,6 +48,10 @@ export class FinancialProductsContainerComponent implements OnInit {
 
           return;
         }
+
+        this.financialProducts = response;
+
+        this.takeElementaByPageSize();
       });
   }
 
@@ -76,7 +77,7 @@ export class FinancialProductsContainerComponent implements OnInit {
       return;
     }
 
-    this.elementsByPage = FINANCIAL_PRODUCS_MOCK;
+    this.elementsByPage = this.financialProducts;
   }
 
   handleSearcherValueChange(value: string) {

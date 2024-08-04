@@ -1,5 +1,5 @@
-<div class="dropdown">
-  <button class="dropbtn">
+<div class="dropdown" [ngClass]="{ show: dropdownVisible }">
+  <button class="dropbtn" (click)="toggleDropdown()">
     <span class="dot"></span>
     <span class="dot"></span>
     <span class="dot"></span>

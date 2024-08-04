@@ -34,24 +34,27 @@ export class CreateFinancialProductComponent {
 
   formSkeleton = {
     id: [
-      '',
+      '1000',
       [Validators.required, Validators.minLength(3), Validators.maxLength(10)],
     ],
     name: [
-      '',
+      'Tarjeta de débito',
       [Validators.required, Validators.minLength(5), Validators.maxLength(100)],
     ],
     description: [
-      '',
+      'Tarjeta de débito',
       [
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(200),
       ],
     ],
-    logo: ['', [Validators.required]],
-    date_release: ['', [Validators.required]],
-    date_revision: ['', [Validators.required]],
+    logo: [
+      'https://png.pngtree.com/png-clipart/20210226/ourmid/pngtree-rectangle-credit-card-clip-art-png-image_2956022.jpg',
+      [Validators.required],
+    ],
+    date_release: ['2024-08-04', [Validators.required]],
+    date_revision: ['2025-08-04', [Validators.required]],
   };
 
   InputValidation = InputValidation;
@@ -71,7 +74,7 @@ export class CreateFinancialProductComponent {
     this.form = this.formBuilder.group(this.formSkeleton);
 
     // Disable date_revision field
-    this.form.controls.date_revision.disable();
+    //this.form.controls.date_revision.disable();
   }
 
   reset() {
