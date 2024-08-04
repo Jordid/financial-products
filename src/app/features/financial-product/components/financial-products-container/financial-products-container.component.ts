@@ -32,8 +32,7 @@ export class FinancialProductsContainerComponent implements OnInit {
       .pipe(
         catchError(() => {
           return of(null);
-        }),
-        delay(1000)
+        })
       )
       .subscribe((response) => {
         this.gettingFinancialProducts = false;

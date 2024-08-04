@@ -7,6 +7,8 @@ import {
   FinancialProduct,
 } from '../../../interfaces/financial-product.interface';
 import { FinancialProductService } from '../../services/financial-product.service';
+import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
+import { AlertType } from '../../../../ui/components/alerts/enums/alert-type.enum';
 
 @Component({
   selector: 'app-create-financial-product',
@@ -63,7 +65,8 @@ export class CreateFinancialProductComponent {
 
   constructor(
     private fb: FormBuilder,
-    private financialProductService: FinancialProductService
+    private financialProductService: FinancialProductService,
+    private alertService: AlertService
   ) {
     this.formBuilder = fb;
 
@@ -109,9 +112,18 @@ export class CreateFinancialProductComponent {
         this.submitting = false;
 
         if (response === null) {
-          // TODO: handle error
+          this.alertService.showNotification(
+            'Error al crear el producto financieros.',
+            AlertType.Error
+          );
+
           return;
         }
+
+        this.alertService.showNotification(
+          'Producto financiero creado con éxito.',
+          AlertType.Success
+        );
       });
 
     this.form.reset();
