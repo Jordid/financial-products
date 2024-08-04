@@ -35,3 +35,15 @@
     </ng-template>
   </div>
 </div>
+
+<app-confirmation-dialog
+  [message]="
+    '¿Estás seguro de eliminar el producto: ' +
+    selectedFinancialProduct?.name +
+    '?'
+  "
+  [visible]="isConfirmationDialogVisible"
+  (onConfirm)="handleConfirm()"
+  (onCancel)="handleCancel()"
+>
+</app-confirmation-dialog>

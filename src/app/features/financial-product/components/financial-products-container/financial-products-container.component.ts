@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { catchError, delay, of } from 'rxjs';
+import { catchError, of } from 'rxjs';
 import { AlertType } from '../../../../ui/components/alerts/enums/alert-type.enum';
 import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
 import { FinancialProduct } from '../../../interfaces/financial-product.interface';
@@ -12,9 +12,14 @@ import { FinancialProductService } from '../../services/financial-product.servic
   styleUrl: './financial-products-container.component.scss',
 })
 export class FinancialProductsContainerComponent implements OnInit {
-  gettingFinancialProducts = false;
   financialProducts: FinancialProduct[] = [];
   elementsByPage: FinancialProduct[] = [];
+  selectedFinancialProduct: FinancialProduct | null = null;
+
+  gettingFinancialProducts = false;
+  deletingFinancialProducts = false;
+  isConfirmationDialogVisible = false;
+
   pageSize = 5;
 
   constructor(
@@ -24,6 +29,10 @@ export class FinancialProductsContainerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getFinancialProducts();
+  }
+
+  getFinancialProducts(): void {
     this.gettingFinancialProducts = true;
     this.financialProducts = [];
 
@@ -39,7 +48,7 @@ export class FinancialProductsContainerComponent implements OnInit {
 
         if (response === null) {
           this.alertService.showNotification(
-            'Error al obtener los productos financieros.',
+            'Error al obtener los productos financiero.',
             AlertType.Error
           );
 
@@ -60,8 +69,51 @@ export class FinancialProductsContainerComponent implements OnInit {
     this.router.navigate([`/financial-products/${product.id}/update`]);
   }
 
-  handleDeleteProduct(product: FinancialProduct): void {
-    console.log('Deleting product: ', product);
+  handleDeleteProduct(product: FinancialProduct) {
+    this.selectedFinancialProduct = product;
+
+    this.isConfirmationDialogVisible = true;
+  }
+
+  handleConfirm() {
+    this.isConfirmationDialogVisible = false;
+
+    if (!this.selectedFinancialProduct?.id) {
+      return;
+    }
+
+    this.deletingFinancialProducts = true;
+
+    this.financialProductService
+      .delete(this.selectedFinancialProduct.id)
+      .pipe(
+        catchError(() => {
+          return of(null);
+        })
+      )
+      .subscribe((response) => {
+        this.deletingFinancialProducts = false;
+
+        if (response === null) {
+          this.alertService.showNotification(
+            'Error al eliminar el producto financiero.',
+            AlertType.Error
+          );
+
+          return;
+        }
+
+        this.alertService.showNotification(
+          'Producto financiero eliminado con éxito.',
+          AlertType.Success
+        );
+
+        this.getFinancialProducts();
+      });
+  }
+
+  handleCancel() {
+    this.isConfirmationDialogVisible = false;
   }
 
   handleChangePageSize(pageSize: number): void {

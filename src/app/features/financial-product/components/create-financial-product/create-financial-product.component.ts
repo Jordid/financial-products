@@ -121,7 +121,7 @@ export class CreateFinancialProductComponent {
 
         if (response === null) {
           this.alertService.showNotification(
-            'Error al crear el producto financieros.',
+            'Error al crear el producto financiero.',
             AlertType.Error
           );
 
@@ -150,7 +150,7 @@ export class CreateFinancialProductComponent {
 
         if (response === null) {
           this.alertService.showNotification(
-            'Error al actualizar el producto financieros.',
+            'Error al actualizar el producto financiero.',
             AlertType.Error
           );
 
