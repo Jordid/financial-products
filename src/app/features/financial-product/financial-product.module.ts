@@ -15,6 +15,7 @@ import { FinancialProductsTableComponent } from './components/financial-products
 import { FinancialTableSkeletonComponent } from './components/financial-table-skeleton/financial-table-skeleton.component';
 import { FinancialProductRoutingModule } from './financial-product-routing.module';
 import { UiSearcherInputComponent } from '../../ui/components/inputs/ui-searcher-input/ui-searcher-input.component';
+import { UiAlertComponent } from '../../ui/components/alerts/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UiSearcherInputComponent } from '../../ui/components/inputs/ui-searcher
     UiInputErrorMessagesComponent,
     UiInfoIconComponent,
     UiSearcherInputComponent,
+    UiAlertComponent,
     ReactiveFormsModule,
     FormsModule,
   ],

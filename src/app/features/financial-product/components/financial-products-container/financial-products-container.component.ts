@@ -3,6 +3,8 @@ import { catchError, delay, of } from 'rxjs';
 import { FinancialProduct } from '../../../interfaces/financial-product.interface';
 import { FinancialProductService } from '../../services/financial-product.service';
 import { FINANCIAL_PRODUCS_MOCK } from './financial-products-mock';
+import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
+import { AlertType } from '../../../../ui/components/alerts/enums/alert-type.enum';
 
 @Component({
   selector: 'app-financial-products-container',
@@ -15,7 +17,11 @@ export class FinancialProductsContainerComponent implements OnInit {
   elementsByPage: FinancialProduct[] = [];
   pageSize = 5;
 
-  constructor(private financialProductService: FinancialProductService) {}
+  constructor(
+    private financialProductService: FinancialProductService,
+    private alertService: AlertService
+  ) {}
+
   ngOnInit(): void {
     this.gettingFinancialProducts = true;
     this.financialProducts = [];
@@ -33,6 +39,11 @@ export class FinancialProductsContainerComponent implements OnInit {
 
         if (response === null) {
           this.financialProducts = FINANCIAL_PRODUCS_MOCK;
+
+          this.alertService.showNotification(
+            'Error al obtener los productos financieros.',
+            AlertType.Error
+          );
 
           this.takeElementaByPageSize();
 
