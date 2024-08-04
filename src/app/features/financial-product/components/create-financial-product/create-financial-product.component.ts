@@ -2,13 +2,13 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, of } from 'rxjs';
 import { InputValidation } from '../../../../core/utils/validations/input-validation';
+import { AlertType } from '../../../../ui/components/alerts/enums/alert-type.enum';
+import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
 import {
   CreateFinancialProduct,
   FinancialProduct,
 } from '../../../interfaces/financial-product.interface';
 import { FinancialProductService } from '../../services/financial-product.service';
-import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
-import { AlertType } from '../../../../ui/components/alerts/enums/alert-type.enum';
 
 @Component({
   selector: 'app-create-financial-product',
@@ -97,11 +97,20 @@ export class CreateFinancialProductComponent {
 
     this.submitting = true;
 
-    const createFinancialProduct: CreateFinancialProduct =
-      this.form.getRawValue();
+    const financialProduct: CreateFinancialProduct = this.form.getRawValue();
 
+    if (this.formData) {
+      this.updateFinancialProduct(financialProduct);
+
+      return;
+    }
+
+    this.createFinancialProduct(financialProduct);
+  }
+
+  createFinancialProduct(financialProduct: FinancialProduct) {
     this.financialProductService
-      .create(createFinancialProduct)
+      .create(financialProduct)
       .pipe(
         catchError(() => {
           return of(null);
@@ -123,9 +132,40 @@ export class CreateFinancialProductComponent {
           'Producto financiero creado con éxito.',
           AlertType.Success
         );
-      });
 
-    this.form.reset();
+        this.form.reset();
+      });
+  }
+
+  updateFinancialProduct(financialProduct: FinancialProduct) {
+    this.financialProductService
+      .update(financialProduct)
+      .pipe(
+        catchError(() => {
+          return of(null);
+        })
+      )
+      .subscribe((response) => {
+        this.submitting = false;
+
+        if (response === null) {
+          this.alertService.showNotification(
+            'Error al actualizar el producto financieros.',
+            AlertType.Error
+          );
+
+          return;
+        }
+
+        this.alertService.showNotification(
+          'Producto financiero actualizado con éxito.',
+          AlertType.Success
+        );
+
+        this.originalFormData = { ...response };
+
+        this.reset();
+      });
   }
 
   get isFormDirty() {

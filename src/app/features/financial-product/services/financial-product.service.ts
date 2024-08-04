@@ -33,4 +33,10 @@ export class FinancialProductService {
 
     return this.http.post<FinancialProduct>(`${url}`, financialProduct);
   }
+
+  update(financialProduct: CreateFinancialProduct) {
+    const url = `${ApiBancoPinchinchaEnv.baseUrl}/ipf-msa-productosfinancieros/bp/products`;
+
+    return this.http.put<FinancialProduct>(`${url}`, financialProduct);
+  }
 }
