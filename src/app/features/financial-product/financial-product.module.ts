@@ -16,11 +16,13 @@ import { FinancialTableSkeletonComponent } from './components/financial-table-sk
 import { FinancialProductRoutingModule } from './financial-product-routing.module';
 import { UiSearcherInputComponent } from '../../ui/components/inputs/ui-searcher-input/ui-searcher-input.component';
 import { UiAlertComponent } from '../../ui/components/alerts/alert/alert.component';
+import { UpdateFinancialProjectContainerComponent } from './components/update-financial-project-container/update-financial-project-container.component';
 
 @NgModule({
   declarations: [
     CreateFinancialProductContainerComponent,
     CreateFinancialProductComponent,
+    UpdateFinancialProjectContainerComponent,
     FinancialProductsContainerComponent,
     FinancialProductsTableComponent,
     FinancialTableSkeletonComponent,

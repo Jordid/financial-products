@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, of } from 'rxjs';
 import { InputValidation } from '../../../../core/utils/validations/input-validation';
@@ -11,6 +11,8 @@ import { FinancialProductService } from '../../services/financial-product.servic
   styleUrl: './create-financial-product.component.scss',
 })
 export class CreateFinancialProductComponent {
+  @Input() title = 'Formulario de Registro';
+
   formBuilder: FormBuilder;
   form: FormGroup;
   submitting = false;
