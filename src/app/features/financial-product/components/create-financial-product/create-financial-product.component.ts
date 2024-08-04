@@ -46,4 +46,8 @@ export class CreateFinancialProductComponent {
       date_revision: ['', [Validators.required]],
     });
   }
+
+  reset() {
+    this.form.reset();
+  }
 }
