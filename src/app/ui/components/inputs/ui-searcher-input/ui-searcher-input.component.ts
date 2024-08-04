@@ -12,9 +12,11 @@ export class UiSearcherInputComponent {
 
   @Output() valueChange = new EventEmitter<string>();
 
-  onInputChange(event: Event): void {
-    const inputElement = event.target as HTMLInputElement;
+  value = '';
 
-    this.valueChange.emit(inputElement.value);
+  onInputChange(event: Event): void {
+    this.value = (event.target as HTMLInputElement).value;
+
+    this.valueChange.emit(this.value);
   }
 }
