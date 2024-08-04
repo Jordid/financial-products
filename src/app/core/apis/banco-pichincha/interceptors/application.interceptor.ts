@@ -16,9 +16,6 @@ export class ApplicationInterceptor implements HttpInterceptor {
     const headers = request.headers.set('authorId', '12345678');
     const modifiedInterceptor = request.clone({ headers });
 
-    console.log('Intercepted request');
-    console.log(modifiedInterceptor);
-
     return next.handle(modifiedInterceptor);
   }
 }

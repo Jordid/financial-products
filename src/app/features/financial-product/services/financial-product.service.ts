@@ -12,6 +12,16 @@ import {
 export class FinancialProductService {
   constructor(private http: HttpClient) {}
 
+  selectedProduct: FinancialProduct | null = null;
+
+  setSelectedProduct(product: FinancialProduct) {
+    this.selectedProduct = product;
+  }
+
+  getSelectedProduct() {
+    return this.selectedProduct;
+  }
+
   getFinancialProducts() {
     const url = `${ApiBancoPinchinchaEnv.baseUrl}/ipf-msa-productosfinancieros/bp/products/`;
 

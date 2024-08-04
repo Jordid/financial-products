@@ -55,7 +55,8 @@ export class FinancialProductsContainerComponent implements OnInit {
   }
 
   handleEditProduct(product: FinancialProduct): void {
-    console.log('Editing product: ', product);
+    this.financialProductService.setSelectedProduct(product);
+
     this.router.navigate([`/financial-products/${product.id}/update`]);
   }
 

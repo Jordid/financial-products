@@ -1,8 +1,10 @@
 <div class="container">
   <div class="form-container">
+    @if (formData) {
     <app-create-financial-product
       title="Actualizar producto"
       [formData]="formData"
     ></app-create-financial-product>
+    }
   </div>
 </div>

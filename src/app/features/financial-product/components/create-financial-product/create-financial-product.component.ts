@@ -77,7 +77,7 @@ export class CreateFinancialProductComponent {
     this.form = this.formBuilder.group(this.formSkeleton);
 
     // Disable date_revision field
-    //this.form.controls.date_revision.disable();
+    this.form.controls.date_revision.disable();
   }
 
   reset() {
@@ -97,9 +97,8 @@ export class CreateFinancialProductComponent {
 
     this.submitting = true;
 
-    const createFinancialProduct: CreateFinancialProduct = this.form.value;
-
-    console.log(createFinancialProduct);
+    const createFinancialProduct: CreateFinancialProduct =
+      this.form.getRawValue();
 
     this.financialProductService
       .create(createFinancialProduct)

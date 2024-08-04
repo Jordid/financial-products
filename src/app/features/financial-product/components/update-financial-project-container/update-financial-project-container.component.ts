@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FinancialProduct } from '../../../interfaces/financial-product.interface';
+import { FinancialProductService } from '../../services/financial-product.service';
 
 @Component({
   selector: 'app-update-financial-project-container',
@@ -7,12 +8,9 @@ import { FinancialProduct } from '../../../interfaces/financial-product.interfac
   styleUrl: './update-financial-project-container.component.scss',
 })
 export class UpdateFinancialProjectContainerComponent {
-  formData: FinancialProduct = {
-    id: 'id_1',
-    name: 'name_1',
-    description: 'description_1',
-    logo: 'logo_1',
-    date_release: 'date_release_1',
-    date_revision: 'date_revision_1',
-  };
+  formData: FinancialProduct | null = null;
+
+  constructor(private financialProductService: FinancialProductService) {
+    this.formData = this.financialProductService.getSelectedProduct();
+  }
 }
