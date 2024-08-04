@@ -1,5 +1,7 @@
 <div class="form-container">
-  <h2>Formulario de Registro</h2>
+  <div class="header">
+    <h2>Formulario de Registro</h2>
+  </div>
 
   <div class="splitter"></div>
 
@@ -82,8 +84,12 @@
   </div>
 
   <div class="buttons-container">
-    <app-secondary-button (click)="reset()">Reiniciar</app-secondary-button>
-    <app-primary-button>Enviar</app-primary-button>
+    <app-secondary-button [disabled]="!isFormDirty" (click)="reset()"
+      >Reiniciar</app-secondary-button
+    >
+    <app-primary-button [disabled]="!isFormValid" (click)="send()"
+      >Enviar</app-primary-button
+    >
   </div>
 </div>
 

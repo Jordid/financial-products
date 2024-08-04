@@ -1,11 +1,15 @@
 .form-container {
   background-color: #fff;
   padding: 0px 0px 24px 0px;
-  h2 {
-    text-align: center;
+  .header {
+    padding: 16px 24px;
+    h2 {
+      text-align: center;
+      margin: 0;
+    }
   }
   .splitter {
-    border-bottom: 3px solid #cacacc;
+    border-bottom: 2px solid #cacacc;
   }
 
   .form {

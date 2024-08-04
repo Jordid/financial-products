@@ -6,3 +6,5 @@ export interface FinancialProduct {
   date_release: string;
   date_revision: string;
 }
+
+export interface CreateFinancialProduct extends FinancialProduct {}
