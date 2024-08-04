@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FinancialProduct } from '../../../interfaces/financial-product.interface';
 
 @Component({
@@ -8,4 +8,7 @@ import { FinancialProduct } from '../../../interfaces/financial-product.interfac
 })
 export class FinancialProductsTableComponent {
   @Input() financialProducts: FinancialProduct[] = [];
+
+  @Output() editProduct = new EventEmitter<FinancialProduct>();
+  @Output() deleteProduct = new EventEmitter<FinancialProduct>();
 }

@@ -5,6 +5,7 @@ import { FinancialProductService } from '../../services/financial-product.servic
 import { FINANCIAL_PRODUCS_MOCK } from './financial-products-mock';
 import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
 import { AlertType } from '../../../../ui/components/alerts/enums/alert-type.enum';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-financial-products-container',
@@ -19,7 +20,8 @@ export class FinancialProductsContainerComponent implements OnInit {
 
   constructor(
     private financialProductService: FinancialProductService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -50,6 +52,15 @@ export class FinancialProductsContainerComponent implements OnInit {
           return;
         }
       });
+  }
+
+  handleEditProduct(product: FinancialProduct): void {
+    console.log('Editing product: ', product);
+    this.router.navigate([`/financial-products/${product.id}/update`]);
+  }
+
+  handleDeleteProduct(product: FinancialProduct): void {
+    console.log('Deleting product: ', product);
   }
 
   handleChangePageSize(pageSize: number): void {

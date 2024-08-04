@@ -5,7 +5,9 @@
       placeholder="Search..."
       (valueChange)="handleSearcherValueChange($event)"
     ></app-ui-searcher-input>
-    <app-primary-button routerLink="/create">Agregar</app-primary-button>
+    <app-primary-button routerLink="/financial-products/create"
+      >Agregar</app-primary-button
+    >
   </div>
 
   <div class="table-footer-container">
@@ -19,6 +21,8 @@
       <div class="table-container">
         <app-financial-products-table
           [financialProducts]="elementsByPage"
+          (editProduct)="handleEditProduct($event)"
+          (deleteProduct)="handleDeleteProduct($event)"
         ></app-financial-products-table>
       </div>
 

@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: 'financial-products',
     loadChildren: () =>
       import('./features/financial-product/financial-product.module').then(
         (m) => m.FinancialProductModule
@@ -10,7 +10,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'financial-products',
     pathMatch: 'full',
   },
 ];

@@ -42,7 +42,10 @@
             {{ financialProduct.date_revision | date : "shortDate" }}
           </div>
 
-          <app-more-actions-button></app-more-actions-button>
+          <app-more-actions-button
+            (editItem)="editProduct.emit(financialProduct)"
+            (deleteItem)="deleteProduct.emit(financialProduct)"
+          ></app-more-actions-button>
         </div>
       </td>
     </tr>
