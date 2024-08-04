@@ -1,1 +1,101 @@
-<p>create-financial-product works!</p>
+<div class="form-container">
+  <h2>Formulario de Registro</h2>
+
+  <div class="splitter"></div>
+
+  <div class="form">
+    <form [formGroup]="form" autocomplete="off">
+      <div class="bp-row">
+        <div class="pb-col-6">
+          <app-input-form-field label="ID" formControlName="id">
+          </app-input-form-field>
+
+          <!-- Errors -->
+          <app-input-error-messages
+            *ngIf="InputValidation.checkInputErrors(form.controls.id)"
+            [fc]="form.controls.id"
+          ></app-input-error-messages>
+        </div>
+        <div class="pb-col-6">
+          <app-input-form-field label="Nombre" formControlName="name">
+          </app-input-form-field>
+
+          <!-- Errors -->
+          <app-input-error-messages
+            *ngIf="InputValidation.checkInputErrors(form.controls.name)"
+            [fc]="form.controls.name"
+          ></app-input-error-messages>
+        </div>
+        <div class="pb-col-6">
+          <app-input-form-field
+            label="Descripción"
+            formControlName="description"
+          >
+          </app-input-form-field>
+
+          <!-- Errors -->
+          <app-input-error-messages
+            *ngIf="InputValidation.checkInputErrors(form.controls.description)"
+            [fc]="form.controls.description"
+          ></app-input-error-messages>
+        </div>
+        <div class="pb-col-6">
+          <app-input-form-field label="Logo" formControlName="logo">
+          </app-input-form-field>
+
+          <!-- Errors -->
+          <app-input-error-messages
+            *ngIf="InputValidation.checkInputErrors(form.controls.logo)"
+            [fc]="form.controls.logo"
+          ></app-input-error-messages>
+        </div>
+        <div class="pb-col-6">
+          <app-input-form-field
+            label="Fecha Liberación"
+            formControlName="date_release"
+          >
+          </app-input-form-field>
+
+          <!-- Errors -->
+          <app-input-error-messages
+            *ngIf="InputValidation.checkInputErrors(form.controls.date_release)"
+            [fc]="form.controls.date_release"
+          ></app-input-error-messages>
+        </div>
+        <div class="pb-col-6">
+          <app-input-form-field
+            label="Fecha revisión"
+            formControlName="date_revision"
+          >
+          </app-input-form-field>
+
+          <!-- Errors -->
+          <app-input-error-messages
+            *ngIf="
+              InputValidation.checkInputErrors(form.controls.date_revision)
+            "
+            [fc]="form.controls.date_revision"
+          ></app-input-error-messages>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="buttons-container">
+    <app-primary-button>Reiniciar</app-primary-button>
+    <app-primary-button>Enviar</app-primary-button>
+  </div>
+</div>
+
+<p>
+  {{ form.status }}
+</p>
+
+<p>
+  {{ form.value | json }}
+</p>
+
+<p style="color: red">
+  Errores
+  {{ form.controls.id.errors | json }}
+</p>

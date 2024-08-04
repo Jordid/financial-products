@@ -1,0 +1,12 @@
+<div class="form-field">
+  <label for="">{{ label }}</label>
+
+  <form [formGroup]="form" autocomplete="off">
+    <input
+      type="text"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      formControlName="control"
+    />
+  </form>
+</div>

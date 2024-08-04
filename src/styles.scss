@@ -9,3 +9,13 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+.bp-row {
+  display: flex;
+  flex-wrap: wrap;
+  .pb-col-6 {
+    width: calc(50% - 16px);
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}

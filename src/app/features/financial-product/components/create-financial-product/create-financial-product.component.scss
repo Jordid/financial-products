@@ -1,0 +1,31 @@
+.form-container {
+  background-color: #fff;
+  padding: 0px 0px 24px 0px;
+  h2 {
+    text-align: center;
+  }
+  .splitter {
+    border-bottom: 3px solid #cacacc;
+  }
+
+  .form {
+    padding: 16px 24px;
+    .bp-row {
+      display: flex;
+      flex-wrap: wrap;
+      .pb-col-6 {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  .buttons-container {
+    padding-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    app-primary-button {
+      min-width: 105px;
+    }
+  }
+}
