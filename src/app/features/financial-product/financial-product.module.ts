@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { UiMoreActionsButtonComponent } from '../../ui/components/buttons/more-actions-button/more-actions-button.component';
 import { UiFooterTableComponent } from '../../ui/components/tables/footer-table/footer-table.component';
 import { CreateFinancialProductComponent } from './components/create-financial-product/create-financial-product.component';
 import { FinancialProductsContainerComponent } from './components/financial-products-container/financial-products-container.component';
@@ -16,6 +17,7 @@ import { FinancialProductRoutingModule } from './financial-product-routing.modul
     CommonModule,
     FinancialProductRoutingModule,
     UiFooterTableComponent,
+    UiMoreActionsButtonComponent,
   ],
 })
 export class FinancialProductModule {}

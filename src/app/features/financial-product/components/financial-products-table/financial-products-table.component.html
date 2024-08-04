@@ -17,7 +17,15 @@
       <td>{{ financialProduct.name }}</td>
       <td>{{ financialProduct.description }}</td>
       <td>{{ financialProduct.date_release | date : "shortDate" }}</td>
-      <td>{{ financialProduct.date_revision | date : "shortDate" }}</td>
+      <td>
+        <div class="last-column">
+          <div>
+            {{ financialProduct.date_revision | date : "shortDate" }}
+          </div>
+
+          <app-more-actions-button></app-more-actions-button>
+        </div>
+      </td>
     </tr>
     }
   </tbody>
