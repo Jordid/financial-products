@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { catchError, of } from 'rxjs';
-import { FinancialProductService } from '../../services/financial-product.service';
+import { catchError, delay, of } from 'rxjs';
 import { FinancialProduct } from '../../../interfaces/financial-product.interface';
+import { FinancialProductService } from '../../services/financial-product.service';
 
 @Component({
   selector: 'app-financial-products-container',
@@ -22,7 +22,8 @@ export class FinancialProductsContainerComponent implements OnInit {
       .pipe(
         catchError(() => {
           return of(null);
-        })
+        }),
+        delay(1000)
       )
       .subscribe((response) => {
         this.gettingFinancialProducts = false;

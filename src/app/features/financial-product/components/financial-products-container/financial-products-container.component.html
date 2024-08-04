@@ -1,15 +1,23 @@
 <div class="container">
   <div class="table-footer-container">
-    <div class="table-container">
-      <app-financial-products-table
-        [financialProducts]="financialProducts"
-      ></app-financial-products-table>
-    </div>
+    <ng-container *ngIf="gettingFinancialProducts; else results">
+      <div class="table-container">
+        <app-financial-table-skeleton></app-financial-table-skeleton>
+      </div>
+    </ng-container>
 
-    <div class="footer-container">
-      <app-footer-table
-        [itemsNumber]="financialProducts.length"
-      ></app-footer-table>
-    </div>
+    <ng-template #results>
+      <div class="table-container">
+        <app-financial-products-table
+          [financialProducts]="financialProducts"
+        ></app-financial-products-table>
+      </div>
+
+      <div class="footer-container">
+        <app-footer-table
+          [itemsNumber]="financialProducts.length"
+        ></app-footer-table>
+      </div>
+    </ng-template>
   </div>
 </div>
