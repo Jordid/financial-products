@@ -14,13 +14,14 @@
     <ng-template #results>
       <div class="table-container">
         <app-financial-products-table
-          [financialProducts]="financialProducts"
+          [financialProducts]="elementsByPage"
         ></app-financial-products-table>
       </div>
 
       <div class="footer-container">
         <app-footer-table
-          [itemsNumber]="financialProducts.length"
+          [itemsNumber]="elementsByPage.length"
+          (selectedPageSize)="handleChangePageSize($event)"
         ></app-footer-table>
       </div>
     </ng-template>

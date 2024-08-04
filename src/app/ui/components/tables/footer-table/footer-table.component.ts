@@ -1,4 +1,10 @@
-import { Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import {
   DropdownItem,
   UiBasicDropdownComponent,
@@ -16,10 +22,13 @@ export const OPTIONS: DropdownItem[] = [
   imports: [UiBasicDropdownComponent],
   templateUrl: './footer-table.component.html',
   styleUrl: './footer-table.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UiFooterTableComponent {
   @Input() itemsNumber = 0;
 
-  paginationOptions = OPTIONS;
-  pageSize = this.paginationOptions[0].value;
+  @Output() selectedPageSize = new EventEmitter<number>();
+
+  pageSizeOptions = OPTIONS;
+  pageSize = this.pageSizeOptions[0].value;
 }

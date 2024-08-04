@@ -2,8 +2,9 @@
   <div class="left">{{ itemsNumber }} Resultados</div>
   <div class="right">
     <app-basic-dropdown
-      [options]="paginationOptions"
+      [options]="pageSizeOptions"
       [value]="pageSize"
+      (selected)="selectedPageSize.emit($event)"
     ></app-basic-dropdown>
   </div>
 </section>

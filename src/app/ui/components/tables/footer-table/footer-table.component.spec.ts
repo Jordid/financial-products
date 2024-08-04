@@ -1,18 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FooterTableComponent } from './footer-table.component';
+import { UiFooterTableComponent } from './footer-table.component';
 
-describe('FooterTableComponent', () => {
-  let component: FooterTableComponent;
-  let fixture: ComponentFixture<FooterTableComponent>;
+describe('UiFooterTableComponent', () => {
+  let component: UiFooterTableComponent;
+  let fixture: ComponentFixture<UiFooterTableComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterTableComponent]
-    })
-    .compileComponents();
+      imports: [UiFooterTableComponent],
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(FooterTableComponent);
+    fixture = TestBed.createComponent(UiFooterTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
