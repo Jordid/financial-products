@@ -2,7 +2,10 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { catchError, of } from 'rxjs';
 import { InputValidation } from '../../../../core/utils/validations/input-validation';
-import { CreateFinancialProduct } from '../../../interfaces/financial-product.interface';
+import {
+  CreateFinancialProduct,
+  FinancialProduct,
+} from '../../../interfaces/financial-product.interface';
 import { FinancialProductService } from '../../services/financial-product.service';
 
 @Component({
@@ -13,9 +16,22 @@ import { FinancialProductService } from '../../services/financial-product.servic
 export class CreateFinancialProductComponent {
   @Input() title = 'Formulario de Registro';
 
+  private _formData!: FinancialProduct;
+
+  @Input() get formData() {
+    return this._formData;
+  }
+
+  set formData(formData: FinancialProduct) {
+    this._formData = formData;
+
+    this.handleFormDataChanges();
+  }
+
   formBuilder: FormBuilder;
-  form: FormGroup;
+  form!: FormGroup;
   submitting = false;
+
   formSkeleton = {
     id: [
       '',
@@ -40,16 +56,31 @@ export class CreateFinancialProductComponent {
 
   InputValidation = InputValidation;
 
+  private originalFormData: FinancialProduct | null = null;
+
   constructor(
     private fb: FormBuilder,
     private financialProductService: FinancialProductService
   ) {
     this.formBuilder = fb;
 
+    this.buildForm();
+  }
+
+  buildForm() {
     this.form = this.formBuilder.group(this.formSkeleton);
+
+    // Disable date_revision field
+    this.form.controls.date_revision.disable();
   }
 
   reset() {
+    if (this.originalFormData) {
+      this.form.reset(this.originalFormData);
+
+      return;
+    }
+
     this.form.reset();
   }
 
@@ -93,5 +124,19 @@ export class CreateFinancialProductComponent {
 
   hasErrors(control: any) {
     return control.invalid && (control.dirty || control.touched);
+  }
+
+  handleFormDataChanges() {
+    this.originalFormData = { ...this.formData };
+
+    if (this.formData) {
+      this.form.controls.id.disable();
+    }
+
+    this.fillForm();
+  }
+
+  fillForm() {
+    this.form.patchValue(this.formData);
   }
 }

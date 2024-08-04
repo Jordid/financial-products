@@ -102,9 +102,9 @@
     <app-secondary-button [disabled]="!isFormDirty" (click)="reset()"
       >Reiniciar</app-secondary-button
     >
-    <app-primary-button [disabled]="!isFormValid" (click)="send()"
-      >Enviar</app-primary-button
-    >
+    <app-primary-button [disabled]="!isFormValid" (click)="send()">
+      {{ formData ? "Actualizar" : "Enviar" }}
+    </app-primary-button>
   </div>
 </div>
 
