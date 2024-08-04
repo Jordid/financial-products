@@ -1,6 +1,10 @@
 <div class="container">
   <div class="input-button-container">
-    <app-ui-searcher-input placeholder="Search..."></app-ui-searcher-input>
+    <app-ui-searcher-input
+      class="searcher-input"
+      placeholder="Search..."
+      (valueChange)="handleSearcherValueChange($event)"
+    ></app-ui-searcher-input>
     <app-primary-button routerLink="/create">Agregar</app-primary-button>
   </div>
 

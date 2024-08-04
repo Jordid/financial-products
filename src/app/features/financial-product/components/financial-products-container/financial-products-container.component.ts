@@ -56,4 +56,8 @@ export class FinancialProductsContainerComponent implements OnInit {
 
     this.elementsByPage = FINANCIAL_PRODUCS_MOCK;
   }
+
+  handleSearcherValueChange(value: string) {
+    console.log('Searching for: ', value);
+  }
 }
