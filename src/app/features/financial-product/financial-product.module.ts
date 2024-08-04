@@ -7,6 +7,7 @@ import { FinancialProductsContainerComponent } from './components/financial-prod
 import { FinancialProductsTableComponent } from './components/financial-products-table/financial-products-table.component';
 import { FinancialTableSkeletonComponent } from './components/financial-table-skeleton/financial-table-skeleton.component';
 import { FinancialProductRoutingModule } from './financial-product-routing.module';
+import { UiPrimaryButtonComponent } from '../../ui/components/buttons/primary-button/primary-button.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { FinancialProductRoutingModule } from './financial-product-routing.modul
     FinancialProductRoutingModule,
     UiFooterTableComponent,
     UiMoreActionsButtonComponent,
+    UiPrimaryButtonComponent,
   ],
 })
 export class FinancialProductModule {}

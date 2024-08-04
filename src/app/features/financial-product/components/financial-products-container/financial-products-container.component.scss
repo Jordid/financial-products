@@ -1,5 +1,10 @@
 .container {
   padding: 48px;
+  .input-button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
   .table-footer-container {
     padding: 16px;
     background-color: #fff;
