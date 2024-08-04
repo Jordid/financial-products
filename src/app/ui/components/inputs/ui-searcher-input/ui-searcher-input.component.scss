@@ -1,0 +1,12 @@
+.input-container input {
+  border: 2px solid var(--light-grayish-blue-two);
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.input-container input:focus {
+  border-color: var(--dark-grayish-blue);
+}
