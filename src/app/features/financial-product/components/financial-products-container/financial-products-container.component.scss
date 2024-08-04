@@ -1,5 +1,5 @@
 .container {
-  padding: 48px;
+  padding: 16px;
   .input-button-container {
     display: flex;
     justify-content: space-between;
@@ -18,5 +18,11 @@
     .footer-container {
       margin-top: 8px;
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 48px;
   }
 }

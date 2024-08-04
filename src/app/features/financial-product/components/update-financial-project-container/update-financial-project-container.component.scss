@@ -1,13 +1,22 @@
 .container {
   display: flex;
   justify-content: center;
-  padding: 48px 16px;
+  padding: 16px;
   .form-container {
     width: 100%;
   }
 }
 
 @media (min-width: 768px) {
+  .container {
+    padding: 48px 16px;
+    .form-container {
+      width: 80%;
+    }
+  }
+}
+
+@media (min-width: 1400px) {
   .form-container {
     width: 40% !important;
   }

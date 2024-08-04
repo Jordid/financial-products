@@ -10,11 +10,14 @@
   }
 
   .form {
-    padding: 16px 24px;
+    padding: 16px;
     .bp-row {
       display: flex;
       flex-wrap: wrap;
-      .pb-col-6 {
+      .pb-col {
+        width: 100%;
+        padding-left: 8px;
+        padding-right: 8px;
         margin-bottom: 16px;
       }
     }
@@ -27,6 +30,19 @@
     gap: 24px;
     app-primary-button {
       min-width: 105px;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .form {
+    padding: 16px 24px;
+    .bp-row {
+      .pb-col {
+        width: calc(50% - 16px) !important;
+        padding-left: 8px;
+        padding-right: 8px;
+      }
     }
   }
 }
