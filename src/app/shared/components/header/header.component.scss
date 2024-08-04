@@ -6,4 +6,8 @@ header {
   padding: 0px 16px;
   text-align: center;
   font-weight: 600;
+  span {
+    cursor: pointer;
+    user-select: none;
+  }
 }

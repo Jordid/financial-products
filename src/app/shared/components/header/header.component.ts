@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { ImagesConfig } from '../../../core/images-config/images-config';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiMoreActionsButtonComponent } from '../../ui/components/buttons/more-actions-button/more-actions-button.component';
 import { UiPrimaryButtonComponent } from '../../ui/components/buttons/primary-button/primary-button.component';
 import { UiSecondaryButtonComponent } from '../../ui/components/buttons/secondary-button/secondary-button.component';
+import { UiInfoIconComponent } from '../../ui/components/icons/info-icon/info-icon.component';
 import { UiInputErrorMessagesComponent } from '../../ui/components/inputs/input-error-messages/input-error-messages.component';
 import { UiInputFormFieldComponent } from '../../ui/components/inputs/input-form-field/input-form-field.component';
 import { UiFooterTableComponent } from '../../ui/components/tables/footer-table/footer-table.component';
@@ -31,6 +32,7 @@ import { FinancialProductRoutingModule } from './financial-product-routing.modul
     UiPrimaryButtonComponent,
     UiInputFormFieldComponent,
     UiInputErrorMessagesComponent,
+    UiInfoIconComponent,
     ReactiveFormsModule,
     FormsModule,
   ],
