@@ -39,6 +39,8 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
   set formData(formData: FinancialProduct) {
     this._formData = formData;
 
+    this.formtDates(this.formData);
+
     this.handleFormDataChanges();
   }
 
@@ -94,6 +96,11 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+  }
+
+  formtDates(formData: FinancialProduct) {
+    formData.date_release = formData.date_release.substring(0, 10);
+    formData.date_revision = formData.date_revision.substring(0, 10);
   }
 
   handleIdChanges() {
@@ -187,11 +194,7 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
 
   reset() {
     if (this.originalFormData) {
-      this.originalFormData.date_release =
-        this.originalFormData.date_release.substring(0, 10);
-
-      this.originalFormData.date_revision =
-        this.originalFormData.date_revision.substring(0, 10);
+      this.formtDates(this.originalFormData);
 
       this.form.reset(this.originalFormData);
 

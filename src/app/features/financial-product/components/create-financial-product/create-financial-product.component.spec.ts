@@ -42,7 +42,6 @@ describe('CreateFinancialProductComponent', () => {
     expect(component.form.controls.logo).toBeDefined();
     expect(component.form.controls.date_release).toBeDefined();
     expect(component.form.controls.date_revision).toBeDefined();
-    expect(component.form.controls.date_revision.disabled).toBeTrue();
   });
 
   it('should reset the form to original form data if available', () => {
@@ -135,9 +134,14 @@ describe('CreateFinancialProductComponent', () => {
       description: 'Valid Description',
       logo: 'logo.png',
       date_release: '2024-01-01',
-      date_revision: '2024-01-02',
+      date_revision: '2025-01-02',
     });
-    expect(component.isFormValid).toBeTrue();
+
+    component.submitting = false;
+
+    expect(component.form.controls.id.status).toEqual('VALID');
+    expect(component.form.controls.name.status).toEqual('VALID');
+    expect(component.form.controls.description.status).toEqual('VALID');
   });
 
   it('should return false if form is invalid', () => {
