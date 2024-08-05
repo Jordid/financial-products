@@ -2,20 +2,14 @@
 <p>
   @if(fc.errors?.['idExists']){
   <ng-container>El ID ya existe!</ng-container>
-  {{ stringHelper || aditionalString?.required }}
   } @if(fc.errors?.['required']){
   <ng-container>Este campo es requerido!</ng-container>
-  {{ stringHelper || aditionalString?.required }}
   } @if(fc.errors?.['minlength']){
   <ng-container>La longitud debe ser como mínimo</ng-container>
   {{ fc.errors?.['minlength']?.requiredLength }}
-  <ng-container>caracteres</ng-container>.
-  {{ stringHelper || aditionalString?.minlength }}
-  } @if(fc.errors?.['maxlength']){
+  <ng-container>caracteres</ng-container>. } @if(fc.errors?.['maxlength']){
   <ng-container>La longitud debe ser como máximo</ng-container>
   {{ fc.errors?.['maxlength']?.requiredLength }}
-  <ng-container>caracteres</ng-container>.
-  {{ stringHelper || aditionalString?.maxlength }}
-  }
+  <ng-container>caracteres</ng-container>. }
 </p>
 }

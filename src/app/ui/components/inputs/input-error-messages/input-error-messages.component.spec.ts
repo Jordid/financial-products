@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { AbstractControl } from '@angular/forms';
 import { UiInputErrorMessagesComponent } from './input-error-messages.component';
 
 describe('UiInputErrorMessagesComponent', () => {
@@ -18,5 +19,11 @@ describe('UiInputErrorMessagesComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should set the fc input correctly', () => {
+    const mockFc = {} as AbstractControl;
+    component.fc = mockFc;
+    expect(component.fc).toBe(mockFc);
   });
 });

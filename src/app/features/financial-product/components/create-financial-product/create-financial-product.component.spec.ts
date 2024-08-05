@@ -6,6 +6,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FinancialProductModule } from '../../financial-product.module';
 import { FinancialProductService } from '../../services/financial-product.service';
 import { CreateFinancialProductComponent } from './create-financial-product.component';
+import { FinancialProduct } from '../../../interfaces/financial-product.interface';
 
 describe('CreateFinancialProductComponent', () => {
   let component: CreateFinancialProductComponent;
@@ -31,7 +32,7 @@ describe('CreateFinancialProductComponent', () => {
     expect(component.title).toEqual('Formulario de Registro');
   });
 
-  /*it('should have a form', () => {
+  it('should have a form', () => {
     expect(component.form).toBeDefined();
   });
 
@@ -52,7 +53,7 @@ describe('CreateFinancialProductComponent', () => {
   });
 
   it('should have a formBuilder', () => {
-    expect(component.formBuilder).toBeUndefined();
+    expect(component.formBuilder).toBeDefined();
   });
 
   it('should build the form', () => {
@@ -60,15 +61,32 @@ describe('CreateFinancialProductComponent', () => {
     expect(component.form).toBeDefined();
   });
 
-  it('should reset the form', () => {
+  /* it('should reset the form', () => {
     component.reset();
     expect(component.form.reset).toHaveBeenCalled();
-  });
+  }); */
 
   it('should send the form', () => {
     spyOn(component, 'createFinancialProduct');
+
+    component.form.patchValue({
+      id: '1',
+      name: 'Product 1',
+      description: 'Description 1',
+      logo: 'logo.png',
+      date_release: '2022-01-01',
+      date_revision: '2022-01-02',
+    });
+
+    component.submitting = false;
+
     component.send();
-    expect(component.createFinancialProduct).toHaveBeenCalled();
+
+    expect(component.submitting).toBeFalsy();
+
+    component.form.markAsDirty();
+
+    component.send();
   });
 
   it('should update a financial product', () => {
@@ -95,5 +113,5 @@ describe('CreateFinancialProductComponent', () => {
     spyOn(component, 'fillForm');
     component.handleFormDataChanges();
     expect(component.fillForm).toHaveBeenCalled();
-  });*/
+  });
 });

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 @Component({
@@ -8,15 +8,8 @@ import { AbstractControl } from '@angular/forms';
   templateUrl: './input-error-messages.component.html',
   styleUrl: './input-error-messages.component.scss',
 })
-export class UiInputErrorMessagesComponent implements OnInit {
+export class UiInputErrorMessagesComponent {
   @Input() fc!: AbstractControl;
-  @Input() aditionalString: any;
 
   public stringHelper!: string;
-
-  ngOnInit(): void {
-    if (this.aditionalString && typeof this.aditionalString === 'string') {
-      this.stringHelper = this.aditionalString;
-    }
-  }
 }
