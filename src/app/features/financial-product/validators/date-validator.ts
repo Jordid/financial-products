@@ -2,7 +2,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export function dateValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    const datePattern = /^\d{4}-\d{2}-\d{2}$/;
+    const datePattern = /^\d{4}\/\d{2}\/\d{2}$/;
     const value = control.value;
 
     if (!value) {
@@ -16,7 +16,7 @@ export function dateValidator(): ValidatorFn {
 
     // Extract year, month, and day from the input string
     const [year, month, day] = value
-      .split('-')
+      .split('/')
       .map((num: string) => parseInt(num, 10));
 
     // Validate month range (1-12)

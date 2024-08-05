@@ -1,10 +1,11 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { ShortDatePipe } from '../../../../shared/pipes/short-date.pipe';
 import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
 import { FinancialProduct } from '../../../interfaces/financial-product.interface';
-import { CreateFinancialProductComponent } from './create-financial-product.component';
 import { FinancialProductModule } from '../../financial-product.module';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CreateFinancialProductComponent } from './create-financial-product.component';
 
 describe('CreateFinancialProductComponent', () => {
   let component: CreateFinancialProductComponent;
@@ -19,7 +20,7 @@ describe('CreateFinancialProductComponent', () => {
         HttpClientTestingModule,
       ],
       declarations: [CreateFinancialProductComponent],
-      providers: [FormBuilder, AlertService],
+      providers: [FormBuilder, AlertService, ShortDatePipe],
     }).compileComponents();
   });
 
@@ -50,8 +51,8 @@ describe('CreateFinancialProductComponent', () => {
       name: 'Product 1',
       description: 'Description',
       logo: 'logo.png',
-      date_release: '2024-01-01',
-      date_revision: '2024-01-02',
+      date_release: '2024/01/01',
+      date_revision: '2024/01/02',
     } as FinancialProduct;
 
     component.originalFormData = formData;
@@ -87,8 +88,8 @@ describe('CreateFinancialProductComponent', () => {
       name: 'Product 1',
       description: 'Description',
       logo: 'logo.png',
-      date_release: '2024-01-01',
-      date_revision: '2024-01-02',
+      date_release: '2024/01/01',
+      date_revision: '2024/01/02',
     } as FinancialProduct;
 
     component.formData = formData;
@@ -106,8 +107,8 @@ describe('CreateFinancialProductComponent', () => {
       name: 'Product 1',
       description: 'Description',
       logo: 'logo.png',
-      date_release: '2024-01-01',
-      date_revision: '2024-01-02',
+      date_release: '2024/01/01',
+      date_revision: '2024/01/02',
     } as FinancialProduct;
     component.formData = formData;
 
@@ -133,7 +134,7 @@ describe('CreateFinancialProductComponent', () => {
       name: 'Valid Product',
       description: 'Valid Description',
       logo: 'logo.png',
-      date_release: '2024-01-01',
+      date_release: '2024/01/01',
       date_revision: '2025-01-02',
     });
 

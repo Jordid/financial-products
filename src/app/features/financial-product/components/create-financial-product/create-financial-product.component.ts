@@ -9,6 +9,7 @@ import {
   takeUntil,
 } from 'rxjs';
 import { InputValidation } from '../../../../core/utils/validations/input-validation';
+import { ShortDatePipe } from '../../../../shared/pipes/short-date.pipe';
 import { AlertType } from '../../../../ui/components/alerts/enums/alert-type.enum';
 import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
 import {
@@ -80,7 +81,8 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private financialProductService: FinancialProductService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private shortDatePipe: ShortDatePipe
   ) {
     this.formBuilder = fb;
 
@@ -88,9 +90,7 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if (!this.originalFormData) {
-      this.handleIdChanges();
-    }
+    this.handleIdChanges();
   }
 
   ngOnDestroy(): void {
@@ -99,8 +99,11 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
   }
 
   formtDates(formData: FinancialProduct) {
-    formData.date_release = formData.date_release.substring(0, 10);
-    formData.date_revision = formData.date_revision.substring(0, 10);
+    formData.date_release =
+      this.shortDatePipe.transform(formData.date_release) || '';
+
+    formData.date_revision =
+      this.shortDatePipe.transform(formData.date_revision) || '';
   }
 
   handleIdChanges() {
@@ -108,6 +111,10 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
     this.form.controls.id.valueChanges
       .pipe(takeUntil(this.destroy$), distinctUntilChanged())
       .subscribe(() => {
+        if (this.originalFormData) {
+          return;
+        }
+
         this.verifiyingId = true;
       });
 
@@ -211,7 +218,18 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
 
     this.submitting = true;
 
-    const financialProduct: CreateFinancialProduct = this.form.getRawValue();
+    const financialProduct: CreateFinancialProduct = {
+      ...this.form.getRawValue(),
+    };
+
+    financialProduct.date_release = financialProduct.date_release.replace(
+      /\//g,
+      '-'
+    );
+    financialProduct.date_revision = financialProduct.date_revision.replace(
+      /\//g,
+      '-'
+    );
 
     if (this.formData) {
       this.updateFinancialProduct(financialProduct);

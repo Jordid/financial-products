@@ -51,6 +51,6 @@ const UI_COMPONENTS = [
     UI_COMPONENTS,
     ShortDatePipe,
   ],
-  providers: [DatePipe],
+  providers: [ShortDatePipe],
 })
 export class FinancialProductModule {}
