@@ -4,9 +4,11 @@ header {
   height: 60px;
   line-height: 60px;
   padding: 0px 16px;
-  text-align: center;
   font-weight: 600;
-  span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
     cursor: pointer;
     user-select: none;
   }
