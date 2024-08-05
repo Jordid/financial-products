@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-more-actions-button',
+  selector: 'bp-more-actions-button',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './more-actions-button.component.html',

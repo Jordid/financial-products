@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-splitter',
+  selector: 'bp-splitter',
   standalone: true,
   imports: [],
   templateUrl: './splitter.component.html',

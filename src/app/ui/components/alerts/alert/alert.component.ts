@@ -5,7 +5,7 @@ import { AlertService } from '../services/alert.service';
 import { AlertType } from '../enums/alert-type.enum';
 
 @Component({
-  selector: 'app-alert',
+  selector: 'bp-alert',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './alert.component.html',

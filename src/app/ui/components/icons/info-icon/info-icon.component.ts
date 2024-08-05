@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-info-icon',
+  selector: 'bp-info-icon',
   standalone: true,
   imports: [],
   templateUrl: './info-icon.component.html',

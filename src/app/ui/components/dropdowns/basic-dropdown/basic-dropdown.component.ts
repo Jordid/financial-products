@@ -7,7 +7,7 @@ export interface DropdownItem {
 }
 
 @Component({
-  selector: 'app-basic-dropdown',
+  selector: 'bp-basic-dropdown',
   standalone: true,
   imports: [ReactiveFormsModule, FormsModule],
   templateUrl: './basic-dropdown.component.html',

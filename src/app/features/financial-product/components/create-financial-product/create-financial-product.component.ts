@@ -23,7 +23,7 @@ import {
 import { idExistsValidator } from '../../validators/product-id-exists-validator';
 
 @Component({
-  selector: 'app-create-financial-product',
+  selector: 'bp-create-financial-product',
   templateUrl: './create-financial-product.component.html',
   styleUrl: './create-financial-product.component.scss',
 })
@@ -86,7 +86,9 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.handleIdChanges();
+    if (!this.originalFormData) {
+      this.handleIdChanges();
+    }
   }
 
   ngOnDestroy(): void {
@@ -185,6 +187,12 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
 
   reset() {
     if (this.originalFormData) {
+      this.originalFormData.date_release =
+        this.originalFormData.date_release.substring(0, 10);
+
+      this.originalFormData.date_revision =
+        this.originalFormData.date_revision.substring(0, 10);
+
       this.form.reset(this.originalFormData);
 
       return;

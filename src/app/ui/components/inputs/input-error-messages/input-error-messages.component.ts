@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-input-error-messages',
+  selector: 'bp-input-error-messages',
   standalone: true,
   imports: [],
   templateUrl: './input-error-messages.component.html',

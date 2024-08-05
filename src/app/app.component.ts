@@ -5,7 +5,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { UiAlertComponent } from './ui/components/alerts/alert/alert.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'bp-root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent, UiAlertComponent],
   templateUrl: './app.component.html',

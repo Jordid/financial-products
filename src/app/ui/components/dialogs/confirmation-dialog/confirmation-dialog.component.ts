@@ -4,7 +4,7 @@ import { UiSecondaryButtonComponent } from '../../buttons/secondary-button/secon
 import { UiSplitterComponent } from '../../splitters/splitter/splitter.component';
 
 @Component({
-  selector: 'app-confirmation-dialog',
+  selector: 'bp-confirmation-dialog',
   standalone: true,
   imports: [
     UiSplitterComponent,

@@ -11,7 +11,7 @@ import {
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-input-form-field',
+  selector: 'bp-input-form-field',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './input-form-field.component.html',

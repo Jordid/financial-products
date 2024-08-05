@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-primary-button',
+  selector: 'bp-primary-button',
   standalone: true,
   imports: [],
   templateUrl: './primary-button.component.html',

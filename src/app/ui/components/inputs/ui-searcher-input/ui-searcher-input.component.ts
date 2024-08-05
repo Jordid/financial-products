@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-ui-searcher-input',
+  selector: 'bp-ui-searcher-input',
   standalone: true,
   imports: [],
   templateUrl: './ui-searcher-input.component.html',

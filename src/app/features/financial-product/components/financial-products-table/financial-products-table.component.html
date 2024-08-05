@@ -3,27 +3,27 @@
     <tr>
       <th>
         Logo
-        <app-info-icon description="Logo del producto"></app-info-icon>
+        <bp-info-icon description="Logo del producto"></bp-info-icon>
       </th>
       <th>
         Nombre del producto
-        <app-info-icon description="Nombre del producto"></app-info-icon>
+        <bp-info-icon description="Nombre del producto"></bp-info-icon>
       </th>
       <th>
         Descripción
-        <app-info-icon description="Descripciób del producto"></app-info-icon>
+        <bp-info-icon description="Descripciób del producto"></bp-info-icon>
       </th>
       <th>
         Fecha de liberación
-        <app-info-icon
+        <bp-info-icon
           description="Fecha de liberación del producto"
-        ></app-info-icon>
+        ></bp-info-icon>
       </th>
       <th>
         Fecha de reestructuración
-        <app-info-icon
+        <bp-info-icon
           description="Fecha de reestructuración del producto"
-        ></app-info-icon>
+        ></bp-info-icon>
       </th>
     </tr>
   </thead>
@@ -42,10 +42,10 @@
             {{ financialProduct.date_revision | bpShortDate }}
           </div>
 
-          <app-more-actions-button
+          <bp-more-actions-button
             (editItem)="editProduct.emit(financialProduct)"
             (deleteItem)="deleteProduct.emit(financialProduct)"
-          ></app-more-actions-button>
+          ></bp-more-actions-button>
         </div>
       </td>
     </tr>

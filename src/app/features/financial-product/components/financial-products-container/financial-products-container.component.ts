@@ -7,7 +7,7 @@ import { FinancialProduct } from '../../../interfaces/financial-product.interfac
 import { FinancialProductService } from '../../services/financial-product.service';
 
 @Component({
-  selector: 'app-financial-products-container',
+  selector: 'bp-financial-products-container',
   templateUrl: './financial-products-container.component.html',
   styleUrl: './financial-products-container.component.scss',
 })

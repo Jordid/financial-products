@@ -17,7 +17,7 @@ export const OPTIONS: DropdownItem[] = [
 ];
 
 @Component({
-  selector: 'app-footer-table',
+  selector: 'bp-footer-table',
   standalone: true,
   imports: [UiBasicDropdownComponent],
   templateUrl: './footer-table.component.html',
