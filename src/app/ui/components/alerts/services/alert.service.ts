@@ -19,7 +19,7 @@ export class AlertService {
     setTimeout(() => this.clearNotification(), 3000);
   }
 
-  private clearNotification() {
+  clearNotification() {
     this.notificationSubject.next(null);
   }
 }

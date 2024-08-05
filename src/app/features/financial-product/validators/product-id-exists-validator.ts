@@ -1,16 +1,13 @@
-import {
-  AbstractControl,
-  AsyncValidatorFn,
-  ValidationErrors,
-} from '@angular/forms';
-import { Observable, of } from 'rxjs';
+import { AbstractControl } from '@angular/forms';
 
-export function idExistsValidator(exists: boolean): AsyncValidatorFn {
-  return (control: AbstractControl): Observable<ValidationErrors | null> => {
-    if (!control.value) {
-      return of(null);
+export function idExistsValidator(exists: boolean) {
+  return (control: AbstractControl) => {
+    const value = control.value;
+
+    if (!value) {
+      return null;
     }
 
-    return of(exists ? { idExists: true } : null);
+    return exists ? { idExists: true } : null;
   };
 }

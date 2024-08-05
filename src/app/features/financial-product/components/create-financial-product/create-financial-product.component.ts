@@ -67,7 +67,7 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
 
   InputValidation = InputValidation;
 
-  private originalFormData: FinancialProduct | null = null;
+  originalFormData: FinancialProduct | null = null;
 
   private destroy$ = new Subject<void>();
 
@@ -146,9 +146,13 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
 
   updateIdControlValidators(exists: boolean): void {
     if (exists) {
-      this.form.controls.id.setAsyncValidators([idExistsValidator(exists)]);
+      this.form.controls.id.setValidators([idExistsValidator(exists)]);
     } else {
-      this.form.controls.id.clearAsyncValidators();
+      this.form.controls.id.setValidators([
+        Validators.required,
+        Validators.minLength(3),
+        Validators.maxLength(10),
+      ]);
     }
 
     this.form.controls.id.updateValueAndValidity();
