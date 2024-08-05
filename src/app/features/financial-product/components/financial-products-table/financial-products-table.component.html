@@ -35,11 +35,11 @@
       </td>
       <td>{{ financialProduct.name }}</td>
       <td>{{ financialProduct.description }}</td>
-      <td>{{ financialProduct.date_release | date : "shortDate" }}</td>
+      <td>{{ financialProduct.date_release | bpShortDate }}</td>
       <td>
         <div class="last-column">
           <div>
-            {{ financialProduct.date_revision | date : "shortDate" }}
+            {{ financialProduct.date_revision | bpShortDate }}
           </div>
 
           <app-more-actions-button

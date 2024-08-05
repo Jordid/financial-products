@@ -1,6 +1,7 @@
 import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ShortDatePipe } from '../../shared/pipes/short-date.pipe';
 import { UiAlertComponent } from '../../ui/components/alerts/alert/alert.component';
 import { UiMoreActionsButtonComponent } from '../../ui/components/buttons/more-actions-button/more-actions-button.component';
 import { UiPrimaryButtonComponent } from '../../ui/components/buttons/primary-button/primary-button.component';
@@ -20,6 +21,19 @@ import { FinancialTableSkeletonComponent } from './components/financial-table-sk
 import { UpdateFinancialProjectContainerComponent } from './components/update-financial-project-container/update-financial-project-container.component';
 import { FinancialProductRoutingModule } from './financial-product-routing.module';
 
+const UI_COMPONENTS = [
+  UiFooterTableComponent,
+  UiMoreActionsButtonComponent,
+  UiSecondaryButtonComponent,
+  UiPrimaryButtonComponent,
+  UiInputFormFieldComponent,
+  UiInputErrorMessagesComponent,
+  UiInfoIconComponent,
+  UiSearcherInputComponent,
+  UiAlertComponent,
+  UiConfirmationDialogComponent,
+  UiSplitterComponent,
+];
 @NgModule({
   declarations: [
     CreateFinancialProductContainerComponent,
@@ -32,19 +46,10 @@ import { FinancialProductRoutingModule } from './financial-product-routing.modul
   imports: [
     CommonModule,
     FinancialProductRoutingModule,
-    UiFooterTableComponent,
-    UiMoreActionsButtonComponent,
-    UiSecondaryButtonComponent,
-    UiPrimaryButtonComponent,
-    UiInputFormFieldComponent,
-    UiInputErrorMessagesComponent,
-    UiInfoIconComponent,
-    UiSearcherInputComponent,
-    UiAlertComponent,
-    UiConfirmationDialogComponent,
-    UiSplitterComponent,
     ReactiveFormsModule,
     FormsModule,
+    UI_COMPONENTS,
+    ShortDatePipe,
   ],
   providers: [DatePipe],
 })
