@@ -99,10 +99,15 @@
   </div>
 
   <div class="buttons-container">
-    <app-secondary-button [disabled]="!isFormDirty" (click)="reset()"
+    <app-secondary-button
+      [disabled]="!isFormDirty || verifiyingId"
+      (click)="reset()"
       >Reiniciar</app-secondary-button
     >
-    <app-primary-button [disabled]="!isFormValid" (click)="send()">
+    <app-primary-button
+      [disabled]="!isFormValid || verifiyingId"
+      (click)="send()"
+    >
       {{ formData ? "Actualizar" : "Enviar" }}
     </app-primary-button>
   </div>

@@ -1,6 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { catchError, of } from 'rxjs';
+import {
+  catchError,
+  debounceTime,
+  distinctUntilChanged,
+  of,
+  Subject,
+  takeUntil,
+} from 'rxjs';
 import { InputValidation } from '../../../../core/utils/validations/input-validation';
 import { AlertType } from '../../../../ui/components/alerts/enums/alert-type.enum';
 import { AlertService } from '../../../../ui/components/alerts/services/alert.service';
@@ -9,13 +16,14 @@ import {
   FinancialProduct,
 } from '../../../interfaces/financial-product.interface';
 import { FinancialProductService } from '../../services/financial-product.service';
+import { idExistsValidator } from '../../validators/product-id-exists-validator';
 
 @Component({
   selector: 'app-create-financial-product',
   templateUrl: './create-financial-product.component.html',
   styleUrl: './create-financial-product.component.scss',
 })
-export class CreateFinancialProductComponent {
+export class CreateFinancialProductComponent implements OnInit, OnDestroy {
   @Input() title = 'Formulario de Registro';
 
   private _formData!: FinancialProduct;
@@ -33,28 +41,26 @@ export class CreateFinancialProductComponent {
   formBuilder: FormBuilder;
   form!: FormGroup;
   submitting = false;
+  verifiyingId = false;
 
   formSkeleton = {
     id: [
-      '1000',
+      '',
       [Validators.required, Validators.minLength(3), Validators.maxLength(10)],
     ],
     name: [
-      'Tarjeta de débito',
+      '',
       [Validators.required, Validators.minLength(5), Validators.maxLength(100)],
     ],
     description: [
-      'Tarjeta de débito',
+      '',
       [
         Validators.required,
         Validators.minLength(10),
         Validators.maxLength(200),
       ],
     ],
-    logo: [
-      'https://png.pngtree.com/png-clipart/20210226/ourmid/pngtree-rectangle-credit-card-clip-art-png-image_2956022.jpg',
-      [Validators.required],
-    ],
+    logo: ['', [Validators.required]],
     date_release: ['2024-08-04', [Validators.required]],
     date_revision: ['2025-08-04', [Validators.required]],
   };
@@ -62,6 +68,8 @@ export class CreateFinancialProductComponent {
   InputValidation = InputValidation;
 
   private originalFormData: FinancialProduct | null = null;
+
+  private destroy$ = new Subject<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -71,6 +79,79 @@ export class CreateFinancialProductComponent {
     this.formBuilder = fb;
 
     this.buildForm();
+  }
+
+  ngOnInit(): void {
+    this.handleIdChanges();
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
+  handleIdChanges() {
+    /* Listen changes */
+    this.form.controls.id.valueChanges
+      .pipe(takeUntil(this.destroy$), distinctUntilChanged())
+      .subscribe(() => {
+        this.verifiyingId = true;
+      });
+
+    /* Listen changes and verify after 1 second */
+    this.form.controls.id.valueChanges
+      .pipe(
+        takeUntil(this.destroy$),
+        distinctUntilChanged(),
+        debounceTime(1000)
+      )
+      .subscribe(() => {
+        if (this.form.controls.id.dirty) {
+          this.verifyId();
+        }
+      });
+  }
+
+  verifyId(): void {
+    const id = this.form.controls.id.value;
+
+    if (!id) {
+      return;
+    }
+
+    this.financialProductService
+      .verifyIf(id)
+      .pipe(
+        catchError(() => {
+          this.alertService.showNotification(
+            'Error al verificar el ID.',
+            AlertType.Error
+          );
+          return of(null);
+        })
+      )
+      .subscribe((response) => {
+        if (response === null) {
+          this.alertService.showNotification(
+            'Error al verificar el ID.',
+            AlertType.Error
+          );
+        }
+
+        this.verifiyingId = false;
+
+        this.updateIdControlValidators(response == true);
+      });
+  }
+
+  updateIdControlValidators(exists: boolean): void {
+    if (exists) {
+      this.form.controls.id.setAsyncValidators([idExistsValidator(exists)]);
+    } else {
+      this.form.controls.id.clearAsyncValidators();
+    }
+
+    this.form.controls.id.updateValueAndValidity();
   }
 
   buildForm() {

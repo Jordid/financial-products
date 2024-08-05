@@ -1,5 +1,8 @@
 <p>
-  @if(fc.errors?.['required']){
+  @if(fc.errors?.['idExists']){
+  <ng-container>El ID ya existe!</ng-container>
+  {{ stringHelper || aditionalString?.required }}
+  } @if(fc.errors?.['required']){
   <ng-container>Este campo es requerido!</ng-container>
   {{ stringHelper || aditionalString?.required }}
   } @if(fc.errors?.['minlength']){
