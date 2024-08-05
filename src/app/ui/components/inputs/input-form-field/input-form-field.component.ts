@@ -31,6 +31,8 @@ export class UiInputFormFieldComponent
   @Input() placeholder = '';
   @Input() disabled = false;
   @Input() hasError = false;
+  @Input() minlength = 100;
+  @Input() maxlength = 100;
 
   form: FormGroup;
   private destroy$ = new Subject<void>();

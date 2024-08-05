@@ -12,6 +12,8 @@
           <app-input-form-field
             label="ID"
             formControlName="id"
+            [minlength]="3"
+            [maxlength]="10"
             [hasError]="hasErrors(form.controls.id)"
           >
           </app-input-form-field>
@@ -26,6 +28,8 @@
           <app-input-form-field
             label="Nombre"
             formControlName="name"
+            [minlength]="5"
+            [maxlength]="100"
             [hasError]="hasErrors(form.controls.name)"
           >
           </app-input-form-field>
@@ -40,6 +44,8 @@
           <app-input-form-field
             label="Descripción"
             formControlName="description"
+            [minlength]="10"
+            [maxlength]="200"
             [hasError]="hasErrors(form.controls.description)"
           >
           </app-input-form-field>
@@ -54,6 +60,8 @@
           <app-input-form-field
             label="Logo"
             formControlName="logo"
+            [minlength]="5"
+            [maxlength]="300"
             [hasError]="hasErrors(form.controls.logo)"
           >
           </app-input-form-field>

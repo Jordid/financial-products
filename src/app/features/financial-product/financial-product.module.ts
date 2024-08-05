@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiAlertComponent } from '../../ui/components/alerts/alert/alert.component';
@@ -46,5 +46,6 @@ import { FinancialProductRoutingModule } from './financial-product-routing.modul
     ReactiveFormsModule,
     FormsModule,
   ],
+  providers: [DatePipe],
 })
 export class FinancialProductModule {}

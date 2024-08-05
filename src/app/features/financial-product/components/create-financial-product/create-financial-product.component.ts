@@ -16,6 +16,10 @@ import {
   FinancialProduct,
 } from '../../../interfaces/financial-product.interface';
 import { FinancialProductService } from '../../services/financial-product.service';
+import {
+  dateExactlyOneYearValidator,
+  dateValidator,
+} from '../../validators/date-validator';
 import { idExistsValidator } from '../../validators/product-id-exists-validator';
 
 @Component({
@@ -61,8 +65,8 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
       ],
     ],
     logo: ['', [Validators.required]],
-    date_release: ['', [Validators.required]],
-    date_revision: ['', [Validators.required]],
+    date_release: ['', [Validators.required, dateValidator()]],
+    date_revision: [''],
   };
 
   InputValidation = InputValidation;
@@ -108,6 +112,15 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         if (this.form.controls.id.dirty) {
           this.verifyId();
+        }
+      });
+
+    this.form.controls.date_release.valueChanges
+      .pipe(takeUntil(this.destroy$), distinctUntilChanged())
+      .subscribe(() => {
+        if (this.form.controls.date_release.dirty) {
+          this.form.controls.date_revision.markAsDirty();
+          this.form.controls.date_revision.updateValueAndValidity();
         }
       });
   }
@@ -161,8 +174,13 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
   buildForm() {
     this.form = this.formBuilder.group(this.formSkeleton);
 
-    // Disable date_revision field
-    this.form.controls.date_revision.disable();
+    this.form.controls.date_revision.setValidators([
+      Validators.required,
+      dateValidator(),
+      dateExactlyOneYearValidator(this.form.controls.date_release),
+    ]);
+
+    this.form.controls.date_revision.updateValueAndValidity();
   }
 
   reset() {
