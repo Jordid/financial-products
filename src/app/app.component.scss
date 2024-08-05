@@ -6,7 +6,7 @@
   .content-container {
     overflow-y: auto;
     flex-grow: 1;
-    background-color: #f4f6f9;
+    background-color: var(--light-grayish-blue-three);
     .alert-container {
       display: flex;
       justify-content: center;

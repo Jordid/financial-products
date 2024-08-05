@@ -2,7 +2,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   thead {
-    background-color: #f9fafc;
+    background-color: var(--light-grayish-blue-four);
     height: 50px;
     tr {
       th {
@@ -15,8 +15,8 @@ table {
 
 table,
 td {
-  border-top: 2px solid #f4f6f9;
-  border-bottom: 2px solid #f4f6f9;
+  border-top: 2px solid var(--light-grayish-blue-three);
+  border-bottom: 2px solid var(--light-grayish-blue-three);
 }
 
 th,
@@ -26,13 +26,13 @@ td {
 }
 
 th {
-  background-color: #f2f2f2;
+  background-color: var(--very-light-gray);
 }
 
 img {
-  max-width: 46px;
-  height: auto;
   border-radius: 50%;
+  height: 46px;
+  width: 46px;
 }
 
 .last-column {

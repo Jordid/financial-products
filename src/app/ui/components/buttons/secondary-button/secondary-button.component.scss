@@ -17,11 +17,11 @@ button {
 }
 
 .secondary-btn:hover {
-  background-color: #d0d4db;
+  background-color: var(--light-grayish-blue-five);
 }
 
 .secondary-btn:active {
-  background-color: #b6bac2;
+  background-color: var(--grayish-blue-two);
 }
 
 .secondary-btn:focus {
@@ -31,7 +31,7 @@ button {
 
 .secondary-btn:disabled,
 .secondary-btn.disabled {
-  background-color: #eaecf2;
+  background-color: var(--light-grayish-blue-six);
   opacity: 0.5;
   cursor: not-allowed;
 }

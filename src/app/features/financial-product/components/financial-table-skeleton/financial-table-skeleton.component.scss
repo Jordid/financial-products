@@ -5,16 +5,26 @@ table {
     td {
       min-width: 201px;
       height: 50px;
-      border-top: 2px solid #f4f6f9;
-      border-bottom: 2px solid #f4f6f9;
-      background: linear-gradient(90deg, #f0f0f0, #e6e6e6, #f0f0f0);
+      border-top: 2px solid var(--light-grayish-blue-three);
+      border-bottom: 2px solid var(--light-grayish-blue-three);
+      background: linear-gradient(
+        90deg,
+        var(--light-grayish-blue-three),
+        var(--light-grayish-blue-two),
+        var(--light-grayish-blue-three)
+      );
       background-size: 200% 100%;
       animation: skeleton-animation 1s infinite;
     }
   }
   .header {
     td {
-      background: linear-gradient(90deg, #f0f0f0, #c7c7c7, #f0f0f0);
+      background: linear-gradient(
+        90deg,
+        var(--light-grayish-blue-three),
+        var(--grayish-blue-two),
+        var(--light-grayish-blue-three)
+      );
     }
   }
 }

@@ -17,11 +17,11 @@ button {
 }
 
 .btn-primary:hover {
-  background-color: #e6c200; /* Color más oscuro al hacer hover */
+  background-color: var(--pure-yellow);
 }
 
 .btn-primary:active {
-  background-color: #cca700; /* Color aún más oscuro al hacer click */
+  background-color: var(--strong-yellow);
 }
 
 .btn-primary:focus {
