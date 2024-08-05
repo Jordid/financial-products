@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { FinancialProductService } from '../../services/financial-product.service';
 import { UpdateFinancialProjectContainerComponent } from './update-financial-project-container.component';
 
 describe('UpdateFinancialProjectContainerComponent', () => {
@@ -8,7 +10,9 @@ describe('UpdateFinancialProjectContainerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [UpdateFinancialProjectContainerComponent],
+      declarations: [UpdateFinancialProjectContainerComponent],
+      imports: [HttpClientTestingModule],
+      providers: [FinancialProductService],
     }).compileComponents();
 
     fixture = TestBed.createComponent(UpdateFinancialProjectContainerComponent);

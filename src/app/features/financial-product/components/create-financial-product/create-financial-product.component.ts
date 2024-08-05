@@ -61,8 +61,8 @@ export class CreateFinancialProductComponent implements OnInit, OnDestroy {
       ],
     ],
     logo: ['', [Validators.required]],
-    date_release: ['2024-08-04', [Validators.required]],
-    date_revision: ['2025-08-04', [Validators.required]],
+    date_release: ['', [Validators.required]],
+    date_revision: ['', [Validators.required]],
   };
 
   InputValidation = InputValidation;

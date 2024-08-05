@@ -8,9 +8,9 @@ describe('FinancialTableSkeletonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FinancialTableSkeletonComponent]
-    })
-    .compileComponents();
+      imports: [],
+      declarations: [FinancialTableSkeletonComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FinancialTableSkeletonComponent);
     component = fixture.componentInstance;

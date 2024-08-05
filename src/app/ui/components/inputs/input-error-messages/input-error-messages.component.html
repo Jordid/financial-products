@@ -1,3 +1,4 @@
+@if(fc){
 <p>
   @if(fc.errors?.['idExists']){
   <ng-container>El ID ya existe!</ng-container>
@@ -17,3 +18,4 @@
   {{ stringHelper || aditionalString?.maxlength }}
   }
 </p>
+}
